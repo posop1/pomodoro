@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react'
+import Buttons from './components/Buttons'
+import Time from './components/Time'
 import { getPadTime } from './helpers/getPadTime'
 import './styles/app.scss'
 
 const App = () => {
-  const [timeLeft, setTimeLeft] = useState(2 * 60)
+  const InitialTime = 25 * 60
+
+  const [timeLeft, setTimeLeft] = useState(InitialTime)
   const [isCounting, setIsCounting] = useState(false)
 
   const minutes: any = getPadTime(Math.floor(timeLeft / 60))
@@ -30,23 +34,22 @@ const App = () => {
   }
   const handleReset = () => {
     setIsCounting(false)
-    setTimeLeft(2 * 60)
+    setTimeLeft(InitialTime)
   }
 
   return (
     <div className="app">
-      <div>
-        <span>{minutes}</span>
-        <span>:</span>
-        <span>{second}</span>
-      </div>
-      <div>
-        {isCounting ? (
-          <button onClick={handleStop}>Stop</button>
-        ) : (
-          <button onClick={handleStart}>Start</button>
-        )}
-        <button onClick={handleReset}>Reset</button>
+      <div className="container">
+        <Time
+          minutes={minutes}
+          second={second}
+        />
+        <Buttons
+          isCounting={isCounting}
+          handleReset={handleReset}
+          handleStart={handleStart}
+          handleStop={handleStop}
+        />
       </div>
     </div>
   )
