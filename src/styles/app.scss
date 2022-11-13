@@ -1,0 +1,20 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0d0d0d;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #eaeaea;
+  background: #080808;
+  padding: 100px;
+  border-radius: 20px;
+}
+// $bg-color: #080808;
+// $white: #eaeaea;
+// $lightbg: #0d0d0d;
+// $light: #5c5c5c;

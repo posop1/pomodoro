@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import s from '../styles/components/time.module.scss'
 
 interface TimeProps {
   minutes: any
@@ -7,10 +8,10 @@ interface TimeProps {
 
 const Time: FC<TimeProps> = ({ minutes, second }) => {
   return (
-    <div>
-      <span>{minutes}</span>
-      <span>:</span>
-      <span>{second}</span>
+    <div className={s.time__container}>
+      <span className={s.time}>{minutes}</span>
+      <span className={s.time}>:</span>
+      <span className={s.time}>{second}</span>
     </div>
   )
 }
