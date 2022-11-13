@@ -6,32 +6,57 @@ interface ButtonsProps {
   handleStop: () => void
   handleStart: () => void
   handleReset: () => void
+  increment: () => void
+  decrement: () => void
 }
 
-const Buttons: FC<ButtonsProps> = ({ isCounting, handleStop, handleStart, handleReset }) => {
+const Buttons: FC<ButtonsProps> = ({
+  isCounting,
+  handleStop,
+  handleStart,
+  handleReset,
+  increment,
+  decrement
+}) => {
   return (
     <div className={s.btns__container}>
-      {isCounting ? (
+      <div className={s.btns__inner}>
+        {isCounting ? (
+          <button
+            onClick={handleStop}
+            className={s.btns}
+          >
+            Stop
+          </button>
+        ) : (
+          <button
+            onClick={handleStart}
+            className={s.btns}
+          >
+            Start
+          </button>
+        )}
         <button
-          onClick={handleStop}
+          onClick={handleReset}
           className={s.btns}
         >
-          Stop
+          Reset
         </button>
-      ) : (
+      </div>
+      <div className={s.settings__btns__container}>
         <button
-          onClick={handleStart}
+          onClick={increment}
           className={s.btns}
         >
-          Start
+          +5
         </button>
-      )}
-      <button
-        onClick={handleReset}
-        className={s.btns}
-      >
-        Reset
-      </button>
+        <button
+          onClick={decrement}
+          className={s.btns}
+        >
+          -5
+        </button>
+      </div>
     </div>
   )
 }

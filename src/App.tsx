@@ -5,9 +5,9 @@ import { getPadTime } from './helpers/getPadTime'
 import './styles/app.scss'
 
 const App = () => {
-  const InitialTime = 25 * 60
+  const [InitialTime, setInitialTime] = useState(25)
 
-  const [timeLeft, setTimeLeft] = useState(InitialTime)
+  const [timeLeft, setTimeLeft] = useState(25 * 60)
   const [isCounting, setIsCounting] = useState(false)
 
   const minutes: any = getPadTime(Math.floor(timeLeft / 60))
@@ -34,7 +34,16 @@ const App = () => {
   }
   const handleReset = () => {
     setIsCounting(false)
-    setTimeLeft(InitialTime)
+    setTimeLeft(InitialTime * 60)
+  }
+
+  const increment = () => {
+    setTimeLeft((prev) => prev + 5 * 60)
+    setInitialTime((prev) => prev + 5)
+  }
+  const decrement = () => {
+    setTimeLeft((prev) => prev - 5 * 60)
+    setInitialTime((prev) => prev - 5)
   }
 
   return (
@@ -49,6 +58,8 @@ const App = () => {
           handleReset={handleReset}
           handleStart={handleStart}
           handleStop={handleStop}
+          increment={increment}
+          decrement={decrement}
         />
       </div>
     </div>
