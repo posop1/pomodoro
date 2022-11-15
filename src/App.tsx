@@ -6,8 +6,8 @@ import './styles/app.scss'
 
 const App = () => {
   const [InitialTime, setInitialTime] = useState(25)
-
   const [timeLeft, setTimeLeft] = useState(25 * 60)
+
   const [isCounting, setIsCounting] = useState(false)
 
   const minutes: any = getPadTime(Math.floor(timeLeft / 60))
